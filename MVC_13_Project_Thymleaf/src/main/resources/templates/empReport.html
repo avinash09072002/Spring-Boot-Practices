@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    
+    <script>
+        function confirmDelete(empId) {
+            if (confirm("Are you sure you want to delete this record of " + empId)) {
+                window.location.href = "delete?no=" + empId;
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div th:if="${not #lists.isEmpty(empList)}">
+        <table align="center" border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Department</th>
+                <th>Hire Date</th>
+            </tr>
+            
+            <tr th:each="emp : ${empList}">
+                <td th:text="${emp.id}"></td>
+                <td th:text="${emp.name}"></td>
+                <td th:text="${emp.salary}"></td>
+                <td th:text="${emp.depart}"></td>
+                <td>
+                     <a th:href="@{edit(no=${emp.id})}">Edit</a>
+                    <button th:onclick="|confirmDelete(${emp.id})|">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div th:unless="${not #lists.isEmpty(empList)}">
+        <p align="center">Employee not found</p>
+    </div>
+    
+    <a href="add">Add Employee</a>
+</body>
+</html>

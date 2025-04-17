@@ -1,0 +1,20 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+      
+    <form th:action="@{/addEmp}" th:method="post" th:object="${employee}">
+    
+        <!-- Employee fields -->
+<!--         <input th:type="text" th:field="*{id}" placeholder="Enter ID" />
+ -->        <input th:type="text" th:field="*{name}" placeholder="Enter Name" />
+
+        <!-- Address fields (nested in Employee) -->
+        <input th:type="text" th:field="*{address.city}" placeholder="Enter City" />
+        <input th:type="text" th:field="*{address.pincod}" placeholder="Enter Pincode" />
+
+        <button type="submit">Submit</button>
+      
+    </form>
+    
+</html>

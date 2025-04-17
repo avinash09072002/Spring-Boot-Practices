@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+        <table border="1">
+           
+           <tr border="1">
+              <th>tid</th>
+              <th>name</th>
+              <th>city</th>
+              <th>pincode</th>
+           </tr>
+           <tr th:each="teacher:${teachers}">
+               <td th:text=${teacher.tid}></td>
+               <td th:text="${teacher.name}"></td>
+               <td th:text="${teacher.address.city}"></td>
+               <td th:text="${teacher.address.pincode}"></td>
+               <td></td>
+           
+           </tr>
+        </table>
+</body>
+</html>

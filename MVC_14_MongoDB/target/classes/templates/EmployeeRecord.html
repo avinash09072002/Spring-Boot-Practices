@@ -1,0 +1,35 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <!-- Display table only if employee list is not empty -->
+    <div th:if="${not #lists.isEmpty(employee)}">
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Pincod</th>
+            </tr>
+            <tr th:each="emp : ${employee}">
+                <td th:text="${emp.id}"></td>
+                <td th:text="${emp.name}"></td>
+                <td th:text="${emp.address.city}"></td>
+                <td th:text="${emp.address.pincod}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Message if no records found -->
+    <div th:if="${#lists.isEmpty(employee)}">
+        <p>No employees found.</p>
+        
+        <a th:href="@{/addEmp}">Add Employee</a>
+    </div>
+            <a th:href="@{/addEmp}">Add Employee</a>
+    
+</body>
+
+</html>
